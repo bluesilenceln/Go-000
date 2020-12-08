@@ -48,7 +48,7 @@ func main() {
 	signal.Notify(stop, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 
 	g, ctx := errgroup.WithContext(context.Background())
-	serv := New("0.0.0.0:8081", http.DefaultServeMux)
+	serv := New("0.0.0.0:8080", http.DefaultServeMux)
 	servDebug := New("0.0.0.0:8081", http.DefaultServeMux)
 
 	g.Go(func() error {
