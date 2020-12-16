@@ -1,0 +1,16 @@
+syntax = "proto3";
+package user.v1;
+
+option go_package = "demo/api/user/v1;v1";
+
+service User {
+    rpc Login (LoginRequest) returns (LoginReply) {}
+}
+
+message LoginRequest {
+    string account = 1;
+}
+
+message LoginReply {
+    string message = 1;
+}
