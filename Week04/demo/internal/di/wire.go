@@ -1,3 +1,6 @@
+// +build wireinject
+// The build tag makes sure the stub is not built in the final build.
+
 package di
 
 import (
@@ -7,6 +10,7 @@ import (
 	"github.com/google/wire"
 )
 
-func InitApp() (*App, func(), error) {
-	panic(wire.Build(data.Provider, biz.Provider, service.Provider, NewApp))
+//go:generate demo t wire
+func InitService() (*service.Service, func(), error) {
+	panic(wire.Build(data.Provider, biz.Provider, service.Provider))
 }

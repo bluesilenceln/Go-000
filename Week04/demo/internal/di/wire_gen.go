@@ -9,19 +9,19 @@ import (
 	"demo/internal/biz"
 	"demo/internal/data"
 	"demo/internal/service"
-	"demo/pkg/cache/redis"
-	"demo/pkg/database/sql"
 )
 
 // Injectors from wire.go:
 
-func InitApp() (*App, func(), error) {
-	db := sql.NewMySQL()
-	redisRedis := redis.NewRedis()
-	userRepo := data.New(db, redisRedis)
+func InitService() (*service.Service, func(), error) {
+	redis, cleanup, err := data.NewRedis()
+	if err != nil {
+		return nil, nil, err
+	}
+	userRepo := data.New(redis)
 	userUseCase := biz.New(userRepo)
 	serviceService := service.New(userUseCase)
-	app := NewApp(serviceService)
-	return app, func() {
+	return serviceService, func() {
+		cleanup()
 	}, nil
 }

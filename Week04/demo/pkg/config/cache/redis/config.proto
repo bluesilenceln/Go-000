@@ -1,0 +1,15 @@
+syntax = "proto3";
+package redis;
+
+// import "google/protobuf/duration.proto";
+import "google/protobuf/wrappers.proto";
+
+option go_package = "demo/pkg/config/cache/redis;redis";
+
+message PbConfig {
+    string network = 1;
+    string address = 2;
+    int32 database = 3;
+    google.protobuf.StringValue password = 4;
+    google.protobuf.Int64Value read_timeout = 5;
+}

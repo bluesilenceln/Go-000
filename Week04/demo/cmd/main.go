@@ -1,14 +1,13 @@
 package main
 
 import (
+	pb "demo/api/user/v1"
 	"demo/internal/di"
+	"demo/pkg"
+	"demo/pkg/transport/grpc"
 	"flag"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
+	"github.com/go-kratos/kratos/pkg/log"
 )
-import "github.com/go-kratos/kratos/pkg/log"
 
 func main() {
 	flag.Parse()
@@ -16,25 +15,19 @@ func main() {
 	defer log.Close()
 	log.Info("demo start")
 
-	_, closeFunc, err := di.InitApp()
+	app := pkg.NewApp()
+	service, _, err := di.InitService()
 	if err != nil {
 		panic(err)
 	}
 
-	c := make(chan os.Signal, 1)
-	signal.Notify(c, syscall.SIGHUP, syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT)
-	for {
-		s := <-c
-		log.Info("get a signal %s", s.String())
-		switch s {
-		case syscall.SIGQUIT, syscall.SIGTERM, syscall.SIGINT:
-			closeFunc()
-			log.Info("demo exit")
-			time.Sleep(time.Second)
-			return
-		case syscall.SIGHUP:
-		default:
-			return
-		}
+	grpcSrv := grpc.NewServer("tcp", ":9000")
+
+	pb.RegisterUserServer(grpcSrv, service)
+
+	app.Append(pkg.Hook{OnStart: grpcSrv.Start, OnStop: grpcSrv.Stop})
+
+	if err := app.Run(); err != nil {
+		log.Error("%+v", err)
 	}
 }

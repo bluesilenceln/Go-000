@@ -1,25 +1,18 @@
 package redis
 
-import (
-	"github.com/go-redis/redis/v8"
-	"time"
-)
-
-type Config struct {
-	Addrs []string
-	DialTimeout  time.Duration
-	ReadTimeout  time.Duration
-	WriteTimeout time.Duration
-}
+import "demo/pkg/config/cache/redis"
 
 type Redis struct {
-	cluster *redis.ClusterClient
+	Config *redis.Config
 }
 
-func NewRedis() *Redis {
+func New(config *redis.Config) *Redis {
 	r := new(Redis)
-	//r.cluster = redis.NewClusterClient(&redis.ClusterOptions{
-	//	Addrs: c.Addrs,
-	//})
+	r.Config = config
+
 	return r
+}
+
+func (r *Redis) Close() {
+
 }

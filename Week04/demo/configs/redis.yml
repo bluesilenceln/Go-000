@@ -1,0 +1,5 @@
+network: tcp
+address: 127.0.0.1:6379
+database: 1
+password: rootmyself
+read_timeout: 5000
