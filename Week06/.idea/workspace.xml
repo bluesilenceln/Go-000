@@ -42,7 +42,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
-  <component name="RunManager" selected="Go Test.BenchmarkRollingNumberUpdateMax in Week06/silding (1)">
+  <component name="RunManager" selected="Go Test.TestAvg in Week06/sliding">
     <configuration name="BenchmarkRollingNumberIncrement in Week06/rolling" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Week06" />
       <working_directory value="$PROJECT_DIR$/rolling" />
@@ -87,24 +87,24 @@
       <pattern value="^\QBenchmarkRollingNumberUpdateMax\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="BenchmarkRollingNumberUpdateMax in Week06/silding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestAvg in Week06/sliding" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="Week06" />
-      <working_directory value="$PROJECT_DIR$/silding" />
-      <framework value="gobench" />
+      <working_directory value="$PROJECT_DIR$/sliding" />
+      <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="Week06/silding" />
+      <package value="Week06/sliding" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$" />
-      <pattern value="^\QBenchmarkRollingNumberUpdateMax\E$" />
+      <pattern value="^\QTestAvg\E$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestAvg in Week06/sliding" />
         <item itemvalue="Go Test.BenchmarkRollingNumberUpdateMax in Week06/silding (1)" />
         <item itemvalue="Go Test.BenchmarkRollingNumberIncrement in Week06/silding (1)" />
         <item itemvalue="Go Test.BenchmarkRollingNumberUpdateMax in Week06/rolling" />
         <item itemvalue="Go Test.BenchmarkRollingNumberIncrement in Week06/rolling" />
-        <item itemvalue="Go Test.BenchmarkRollingNumberUpdateMax in Week06/silding" />
       </list>
     </recent_temporary>
   </component>

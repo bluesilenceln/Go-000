@@ -41,6 +41,7 @@ func TestAvg(t *testing.T) {
 		want		float64
 	} {
 		{10 * time.Second, 1 * time.Second, []float64{0.5, 1.5, 2.5, 3.5, 4.5}, 1.25},
+		{5 * time.Second, 500 * time.Millisecond, []float64{1, 2, 3, 4, 5}, 1.5},
 	}
 
 	for _, tc := range testCase {
