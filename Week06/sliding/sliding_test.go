@@ -1,4 +1,4 @@
-package silding
+package sliding
 
 import (
 	"fmt"
