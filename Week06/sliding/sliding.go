@@ -10,7 +10,7 @@ type Number struct {
 
 	winTime		time.Duration
 	bucketTime 	time.Duration
-	bucketCount int
+	bucketCount	int
 	buckets 	[]*numberBucket
 }
 
